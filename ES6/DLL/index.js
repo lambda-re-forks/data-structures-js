@@ -8,6 +8,15 @@ export class ListNode {
     this.prev = prev;
     this.next = next;
   }
+  insertAfter = () => {
+    return 1;
+  };
+  insertBefore = () => {
+    return 1;
+  };
+  delete = () => {
+    return 1;
+  };
 }
 
 export class Dll {
@@ -16,4 +25,12 @@ export class Dll {
     this.tail = node;
     this.size = node === null ? 0 : 1;
   }
+  len = () => {};
+  removeFromHead = () => {};
+  addToTail = () => {};
+  removeFromTail = () => {};
+  moveToFront = () => {};
+  moveToEnd = () => {};
+  delete = () => {};
+  getMax = () => {};
 }
