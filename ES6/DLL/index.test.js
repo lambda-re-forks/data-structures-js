@@ -10,7 +10,7 @@ describe("Hello", () => {
 describe("ListNode", () => {
   let node;
   let dll;
-  beforeAll(() => {
+  beforeEach(() => {
     node = new ListNode(1);
     dll = new Dll(node);
   });
@@ -44,7 +44,7 @@ describe("Dll", () => {
   let node;
   let dll;
 
-  beforeAll(() => {
+  beforeEach(() => {
     node = new ListNode(1);
     dll = new Dll(node);
   });
@@ -55,60 +55,60 @@ describe("Dll", () => {
     dll.addToHead(10);
     expect(dll.head.value).toBe(10);
     expect(dll.head.next.value).toBe(1);
-    expect(len(dll)).toBe(2);
+    expect(dll.len()).toBe(2);
   });
 
   it("should remove an item from the tail", () => {
     dll.removeFromTail();
     expect(dll.head).toBeNull();
     expect(dll.tail).toBeNull();
-    expect(len(dll)).toBe(0);
+    expect(dll.len()).toBe(0);
 
     dll.addToTail(33);
     expect(dll.head.value).toBe(33);
     expect(dll.tail.value).toBe(33);
-    expect(len(dll)).toBe(1);
+    expect(dll.len()).toBe(1);
     expect(dll.removeFromTail()).toBe(33);
-    expect(len(dll)).toBe(0);
+    expect(dll.len()).toBe(0);
 
     dll.addToTail(68);
-    expect(len(dll)).toBe(1);
+    expect(dll.len()).toBe(1);
     expect(dll.removeFromTail()).toBe(68);
-    expect(len(dll)).toBe(0);
+    expect(dll.len()).toBe(0);
   });
 
   it("should remove an item from the head", () => {
     dll.removeFromHead();
     expect(dll.head).toBeNull();
     expect(dll.tail).toBeNull();
-    expect(len(dll)).toBe(0);
+    expect(dll.len()).toBe(0);
 
     dll.addToHead(2);
     expect(dll.head.value).toBe(2);
     expect(dll.tail.value).toBe(2);
-    expect(len(dll)).toBe(1);
+    expect(dll.len()).toBe(1);
     expect(dll.removeFromHead()).toBe(2);
-    expect(len(dll)).toBe(0);
+    expect(dll.len()).toBe(0);
 
     dll.addToHead(55);
-    expect(len(dll)).toBe(1);
+    expect(dll.len()).toBe(1);
     expect(dll.removeFromHead()).toBe(55);
-    expect(len(dll)).toBe(0);
+    expect(dll.len()).toBe(0);
   });
 
-  it("should remove add to tail", () => {
+  it("should add to tail", () => {
     expect(dll.tail.value).toBe(1);
-    expect(len(dll)).toBe(1);
+    expect(dll.len()).toBe(1);
 
     dll.addToTail(30);
     expect(dll.tail.prev.value).toBe(1);
     expect(dll.tail.value).toBe(30);
-    expect(len(dll)).toBe(2);
+    expect(dll.len()).toBe(2);
 
     dll.addToTail(20);
     expect(dll.tail.prev.value).toBe(30);
     expect(dll.tail.value).toBe(20);
-    expect(len(dll)).toBe(3);
+    expect(dll.len()).toBe(3);
   });
 
   it("should move a node to the end", () => {
@@ -119,13 +119,13 @@ describe("Dll", () => {
     dll.moveToEnd(dll.head);
     expect(dll.tail.value).toBe(40);
     expect(dll.tail.prev.value).toBe(1);
-    expect(len(dll)).toBe(2);
+    expect(dll.len()).toBe(2);
 
     dll.addToTail(4);
     dll.moveToEnd(dll.head.next);
     expect(dll.tail.value).toBe(40);
     expect(dll.tail.prev.value).toBe(4);
-    expect(len(dll)).toBe(3);
+    expect(dll.len()).toBe(3);
   });
 
   it("should move a node to the front", () => {
@@ -136,20 +136,20 @@ describe("Dll", () => {
     dll.moveToFront(dll.tail);
     expect(dll.head.value).toBe(3);
     expect(dll.head.next.value).toBe(1);
-    expect(len(dll)).toBe(2);
+    expect(dll.len()).toBe(2);
 
     dll.addToHead(29);
     dll.moveToFront(dll.head.next);
     expect(dll.head.value).toBe(3);
     expect(dll.head.next.value).toBe(29);
-    expect(len(dll)).toBe(3);
+    expect(dll.len()).toBe(3);
   });
 
   it("should delete a node", () => {
     dll.delete(node);
     expect(dll.head).toBeNull();
     expect(dll.tail).toBeNull();
-    expect(len(dll)).toBe(0);
+    expect(dll.len()).toBe(0);
 
     dll.addToTail(1);
     dll.addToHead(9);
@@ -158,12 +158,12 @@ describe("Dll", () => {
     dll.delete(dll.head);
     expect(dll.head.value).toBe(1);
     expect(dll.tail.value).toBe(6);
-    expect(len(dll)).toBe(2);
+    expect(dll.len()).toBe(2);
 
     dll.delete(dll.head);
     expect(dll.head.value).toBe(6);
     expect(dll.tail.value).toBe(6);
-    expect(len(dll)).toBe(1);
+    expect(dll.len()).toBe(1);
   });
 
   it("should return its maximum value", () => {

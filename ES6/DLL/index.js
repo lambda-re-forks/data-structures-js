@@ -8,14 +8,31 @@ export class ListNode {
     this.prev = prev;
     this.next = next;
   }
-  insertAfter = () => {
-    return 1;
+  insertAfter = value => {
+    const newNode = new ListNode(value);
+    if (this.next) {
+      this.next.prev = newNode;
+      this.next = newNode;
+    } else {
+      this.next = newNode;
+    }
   };
-  insertBefore = () => {
-    return 1;
+  insertBefore = value => {
+    const newNode = new ListNode(value);
+    if (this.prev) {
+      this.prev.next = newNode;
+      this.prev = newNode;
+    } else {
+      this.prev = newNode;
+    }
   };
   delete = () => {
-    return 1;
+    if (this.next) {
+      this.next.prev = this.prev;
+    }
+    if (this.prev) {
+      this.prev.next = this.next;
+    }
   };
 }
 
@@ -25,9 +42,23 @@ export class Dll {
     this.tail = node;
     this.size = node === null ? 0 : 1;
   }
-  len = () => {};
+  len = () => {
+    return this.size;
+  };
   removeFromHead = () => {};
-  addToTail = () => {};
+  addToTail = value => {
+    const newNode = new ListNode(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.prev = this.tail;
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+    this.size += 1;
+  };
+  addToHead = () => {};
   removeFromTail = () => {};
   moveToFront = () => {};
   moveToEnd = () => {};
