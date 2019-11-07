@@ -1,11 +1,4 @@
-import { hello, ListNode, Dll } from "./index";
-
-describe("Hello", () => {
-  it("should return hello", () => {
-    const hi = hello();
-    expect(hi).toBe("Hello World");
-  });
-});
+import { ListNode, Dll } from "./index";
 
 describe("ListNode", () => {
   let node;
@@ -69,12 +62,28 @@ describe("Dll", () => {
     expect(dll.tail.value).toBe(33);
     expect(dll.len()).toBe(1);
     expect(dll.removeFromTail()).toBe(33);
+    expect(dll.head).toBeNull();
+    expect(dll.tail).toBeNull();
     expect(dll.len()).toBe(0);
 
     dll.addToTail(68);
     expect(dll.len()).toBe(1);
     expect(dll.removeFromTail()).toBe(68);
     expect(dll.len()).toBe(0);
+
+    dll.addToTail(33);
+    expect(dll.head.value).toBe(33);
+    expect(dll.tail.value).toBe(33);
+    expect(dll.len()).toBe(1);
+
+    dll.addToTail(66);
+    expect(dll.head.value).toBe(33);
+    expect(dll.tail.value).toBe(66);
+    expect(dll.len()).toBe(2);
+    expect(dll.removeFromTail()).toBe(66);
+    expect(dll.head.value).toBe(33);
+    expect(dll.tail.value).toBe(33);
+    expect(dll.len()).toBe(1);
   });
 
   it("should remove an item from the head", () => {
@@ -88,12 +97,27 @@ describe("Dll", () => {
     expect(dll.tail.value).toBe(2);
     expect(dll.len()).toBe(1);
     expect(dll.removeFromHead()).toBe(2);
+    expect(dll.head).toBeNull();
+    expect(dll.tail).toBeNull();
     expect(dll.len()).toBe(0);
 
     dll.addToHead(55);
     expect(dll.len()).toBe(1);
     expect(dll.removeFromHead()).toBe(55);
     expect(dll.len()).toBe(0);
+
+    dll.addToHead(2);
+    expect(dll.head.value).toBe(2);
+    expect(dll.tail.value).toBe(2);
+    expect(dll.len()).toBe(1);
+    dll.addToHead(4);
+    expect(dll.head.value).toBe(4);
+    expect(dll.tail.value).toBe(2);
+    expect(dll.len()).toBe(2);
+    expect(dll.removeFromHead()).toBe(4);
+    expect(dll.head.value).toBe(2);
+    expect(dll.tail.value).toBe(2);
+    expect(dll.len()).toBe(1);
   });
 
   it("should add to tail", () => {
@@ -115,13 +139,13 @@ describe("Dll", () => {
     dll.addToHead(40);
     expect(dll.tail.value).toBe(1);
     expect(dll.head.value).toBe(40);
-
     dll.moveToEnd(dll.head);
     expect(dll.tail.value).toBe(40);
     expect(dll.tail.prev.value).toBe(1);
     expect(dll.len()).toBe(2);
 
     dll.addToTail(4);
+
     dll.moveToEnd(dll.head.next);
     expect(dll.tail.value).toBe(40);
     expect(dll.tail.prev.value).toBe(4);
