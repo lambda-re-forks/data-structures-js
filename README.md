@@ -1,1 +1,1 @@
-# data-structures-js-es6
+# data-structures-js
