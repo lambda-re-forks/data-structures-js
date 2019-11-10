@@ -198,5 +198,13 @@ describe("Dll", () => {
     expect(dll.getMax()).toBe(100);
     dll.addToTail(101);
     expect(dll.getMax()).toBe(101);
+
+    let negativeDll = new Dll();
+    negativeDll.addToTail(-5);
+
+    negativeDll.addToTail(-4);
+    expect(negativeDll.getMax()).toBe(-4);
+    negativeDll.addToTail(-3);
+    expect(negativeDll.getMax()).toBe(-3);
   });
 });

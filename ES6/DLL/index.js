@@ -138,6 +138,32 @@ export class Dll {
       }
     }
   };
-  delete = () => {};
-  getMax = () => {};
+  delete = node => {
+    if (node.value === this.head.value && node.value === this.tail.value) {
+      this.head = null;
+      this.tail = null;
+    } else if (node.value === this.tail.value) {
+      this.tail.prev.next = null;
+      this.tail = this.tail.prev;
+    } else if (node.value === this.head.value) {
+      this.head.next.prev = null;
+      this.head = this.head.next;
+    } else {
+      node.prev.next = node.next;
+      node.next.prev = node.prev;
+    }
+    this.size -= 1;
+    return node.value;
+  };
+  getMax = () => {
+    let current = this.head;
+    let max = null;
+    while (current) {
+      if (current.value > max || max === null) {
+        max = current.value;
+      }
+      current = current.next;
+    }
+    return max;
+  };
 }
