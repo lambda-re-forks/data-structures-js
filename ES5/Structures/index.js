@@ -1,6 +1,10 @@
+const { Dll } = require("./DLL");
+const { Queue } = require("./Queue");
+const { Stack } = require("./Stack");
+const { BinarySearchTree } = require("./BinarySearchTree");
 module.exports = {
-  Dll: require("./DLL").Dll,
-  Queue: require("./Queue").Queue,
-  Stack: require("./Stack").Stack,
-  BinarySearchTree: require("./BST").BinarySearchTree
+  Dll,
+  Queue,
+  Stack,
+  BinarySearchTree
 };
