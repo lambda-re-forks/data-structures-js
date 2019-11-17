@@ -7,7 +7,6 @@ function linearSearch(arr, target) {
   return -1;
 }
 function binarySearch(arr, target) {
-  // console.log("here");
   let high = arr.length;
   let low = 0;
   if (arr.length === 0) {
@@ -27,7 +26,6 @@ function binarySearch(arr, target) {
 }
 function binarySearchRecursive(arr, target, low, high) {
   let mid = Math.floor((high + low) / 2);
-  // console.log({ high, low, mid, arr });
   if (low > high || arr.length === 0) {
     return -1;
   }

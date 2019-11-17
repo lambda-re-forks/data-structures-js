@@ -50,4 +50,4 @@ function anagrams(word) {
   return dict[stringSort(word)];
 }
 
-console.log(anagrams("aeprs"));
+// console.log(anagrams("aeprs"));
